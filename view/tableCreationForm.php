@@ -106,12 +106,12 @@
             </select>
             <br>
             <h2>Table Name</h2>
-            <input type="text" name="tableName" class="tableName" placeholder="Enter Table name...">
+            <input type="text" name="tableName" autocomplete="off" class="tableName" placeholder="Enter Table name..." required>
 
             <h2>Add Columns</h2>
             <div class="listOfColumnInputs">
                 <div class="inputAndSelect">
-                    <input type="text" name="columnName[]" class="columnName" placeholder="Enter Column name...">
+                    <input type="text" name="columnName[]" autocomplete="off" class="columnName" placeholder="Enter Column name..." required>
                     <select name="datatype[]">
                         <option value="int">INT</option>
                         <option value="varchar(255)">VARCHAR(255)</option>
@@ -136,7 +136,7 @@
         let div = document.createElement('div');
         div.classList.add("inputAndSelect");
         div.innerHTML = `
-            <input type="text" name="columnName[]" class="columnName" placeholder="Enter Column name...">
+            <input type="text" name="columnName[]" autocomplete="off" class="columnName" placeholder="Enter Column name..." required>
             <select name="datatype[]">
                 <option value="int">INT</option>
                 <option value="varchar(255)">VARCHAR(255)</option>

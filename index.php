@@ -14,4 +14,5 @@ $server->post("/createTable", "createTable");
 $server->post("/viewTables", "viewTables");
 $server->post("/fetchColumns", "fetchColumns");
 $server->post("/insertValue","insertValue");
+
 $server->route();

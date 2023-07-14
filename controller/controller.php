@@ -85,6 +85,7 @@ class userController
             default:
                 $allColumns = $this->userModel->fetchAllColumns($databaseName, $tableName);
         }
+        $allTables = $this->userModel->fetchTable($databaseName);
         require 'view/tablesList.php';
     }
 
@@ -96,9 +97,15 @@ class userController
         $col_value = $data['col_value'];
         $count = count($col_name);
 
-        for($i = 0; $i < $count; $i++)
+        $this->userModel->insertRowsOnTable($dbname, $tableName, $col_value[0]);
+
+        for($i = 1; $i < $count; $i++)
         {
-            $this->userModel->insertValuesOnTable($dbname, $tableName, $col_name[$i], $col_value[$i]);
+            $this->userModel->updateValuesOnTable($dbname, $tableName, $col_name[$i], $col_value[$i],$col_value[0]);
+//          $this->userModel->updateValuesOnTable($dbname=>"database name", $tableName=>"table name", $col_name[$i]=>"column name", $col_value[$i]=>"column value",$col_value[0]=>"id");
         }
+//        echo "<pre>";
+//        var_dump($data);
+//        echo "</pre>";
     }
 }

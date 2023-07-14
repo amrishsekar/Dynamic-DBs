@@ -49,7 +49,7 @@ class userModel extends database {
         try
         {
             $this->db->query("USE `$dbname`");
-            $this->db->query("CREATE TABLE `$tableName`(id int AUTO_INCREMENT PRIMARY KEY)");
+            $this->db->query("CREATE TABLE `$tableName`(id int PRIMARY KEY)");
         }
         catch (PDOException $e)
         {
@@ -100,34 +100,35 @@ class userModel extends database {
         }
     }
 
-    public function insertValuesOnTable($dbname, $tableName, $columns, $values)
+    public function insertRowsOnTable($dbname, $tableName, $values)
     {
         try
         {
-            $this->db->query("USE $dbname");
-            $this->db->query("INSERT INTO $tableName($columns) VALUES ($values)");
-            echo "<pre>";
-            var_dump($dbname, $tableName, $columns,$values);
-            echo "</pre>";
+            $this->db->query("
+            USE $dbname;
+            INSERT INTO $tableName (id) VALUES ($values);
+            ");
         }
         catch (Exception $e)
         {
             die("Rows Insertion failed :".$e->getMessage());
         }
-
-//        try {
-//            $this->db->query("USE $dbname");
-//
-//            // Prepare the column names and values
-//            $columnNames = implode(', ', $col_name);
-//            $valuePlaceholders = implode(', ', array_fill(0, count($col_value), '?'));
-//
-//            // Construct the SQL query with parameter binding
-//            $query = "INSERT INTO $tableName ($columnNames) VALUES ($valuePlaceholders)";
-//            $stmt = $this->db->prepare($query);
-//            $stmt->execute($col_value);
-//        } catch (Exception $e) {
-//            die("Rows Insertion failed: " . $e->getMessage());
-//        }
     }
+
+    public function updateValuesOnTable($database, $table, $column, $value, $id)
+    {
+        try
+        {
+            $this->db->query("
+            USE $database;
+            UPDATE $table SET $column = '$value' WHERE id = $id;
+            ");
+            header('location: /');
+        }
+        catch (Exception $e)
+        {
+            die("Rows Updating failed :".$e->getMessage());
+        }
+    }
+
 }

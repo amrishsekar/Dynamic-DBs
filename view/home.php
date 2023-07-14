@@ -39,12 +39,14 @@
             outline: none;
             cursor: pointer;
         }
+
         .row{
             background-color: #222;
             color: white;
             padding: 25px 30px 1px 30px;
             border-radius: 5px;
         }
+        
         .form-group select {
             outline: none;
             width: 100%;

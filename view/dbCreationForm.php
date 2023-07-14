@@ -67,7 +67,7 @@
     <h1>Create Database Form</h1>
     <form action="/createDb" method="post">
         <div class="form-group">
-            <input type="text" name="createDB" placeholder="Create DB name...">
+            <input type="text" name="createDB" autocomplete="off" placeholder="Create DB name..." required>
         </div>
         <div class="form-group">
             <button type="submit">Create Database</button>
